@@ -5,6 +5,8 @@
  */
 package Controlador;
 
+import Modelo.EstadoEjecucion;
+import Modelo.IEstadoEstrategy;
 import Modelo.procesosDAO;
 import java.util.ArrayList;
 import java.util.Random;
@@ -31,6 +33,7 @@ import static java.lang.Thread.sleep;
  */
 public class nuevo_Listo extends Thread {
 
+    private IEstadoEstrategy estrategia;
     public boolean iteral;
     ArrayList<procesosDAO> Llistoo;
     ArrayList<procesosDAO> Lnuevo;
@@ -273,7 +276,8 @@ public class nuevo_Listo extends Thread {
                 Lbloqueado.add(Lejecucion.get(0));
                 Lejecucion.remove(0);
                 pausa();
-                mostrarEjecucion();
+                estrategia = new EstadoEjecucion();
+                estrategia.mostrar(ejecucion, Lejecucion);
                 mostrarbloqueado();
                 pausa();
                 pasarListoaEjecucion();
