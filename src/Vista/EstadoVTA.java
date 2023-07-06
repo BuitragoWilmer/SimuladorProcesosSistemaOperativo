@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -9,17 +9,21 @@ package Vista;
  *
  * @author Brayan
  */
+import Controlador.nuevo_Listo;
 import Modelo.procesosDAO;
 import Modelo.recursosDAO;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultButtonModel;
 import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 
 public class EstadoVTA extends javax.swing.JFrame {
      int ID = 0;
     DefaultListModel hardware = new DefaultListModel();
-    DefaultListModel listo = new DefaultListModel();
+    DefaultListModel listo = new  DefaultListModel();
     DefaultListModel ejecucion = new DefaultListModel();
     DefaultListModel bloqueado = new DefaultListModel();
     DefaultListModel terminado = new DefaultListModel();
@@ -27,40 +31,30 @@ public class EstadoVTA extends javax.swing.JFrame {
     public EstadoVTA() {
         
         initComponents();
-        hardware= new DefaultListModel();
-        jList1.setModel(hardware);
-        jlisto.setModel(listo);
+
+        jList2.setModel(hardware);
         jejecucion.setModel(ejecucion);
         jbloqueado.setModel(bloqueado);
-        jterminado.setModel(terminado);    
+        jterminado.setModel(terminado); 
+        jlisto.setModel(listo);
     }
     ArrayList<procesosDAO> listaprocesos = new ArrayList();
     ArrayList<procesosDAO> Llisto = new ArrayList();
     ArrayList<procesosDAO> Lejecucion = new ArrayList();
     ArrayList<procesosDAO> LBloqueado = new ArrayList();
     ArrayList<procesosDAO> Lterminado = new ArrayList();
+   
     procesosDAO DAOpro = new procesosDAO();
     recursosDAO DAOrec = new recursosDAO();
+      nuevo_Listo obj = new nuevo_Listo(Llisto,listaprocesos, listo, Lejecucion, ejecucion, hardware, Lterminado, terminado, LBloqueado,bloqueado);
     
-    
-    String R1="";
-    String R2="";  
-    String R3="";  
-    String R4="";  
-    String R5="";  
-    String R6="";  
+    int R1=0;
+    int R2=0;  
+    int R3=0;  
+    int R4=0;  
+    int R5=0;  
+    int R6=0;  
      
-    public void pausa(){
-    try {
-              
-         Thread.sleep(4000);
-        } catch (InterruptedException e) {
-         System.out.println("Thread Interrupted"); 
-        }  
-    
-    
-    }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,7 +70,7 @@ public class EstadoVTA extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jlisto = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jterminado = new javax.swing.JList<>();
@@ -90,7 +84,8 @@ public class EstadoVTA extends javax.swing.JFrame {
         crearprobtn = new javax.swing.JButton();
         ejecutarbtn = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jlisto = new javax.swing.JList<>();
+        jList2 = new javax.swing.JList<>();
+        pausarbtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -144,10 +139,10 @@ public class EstadoVTA extends javax.swing.JFrame {
         jPanel2.add(jLabel2);
         jLabel2.setBounds(50, 40, 60, 16);
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(jlisto);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(40, 70, 84, 113);
+        jScrollPane1.setBounds(170, 70, 84, 113);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel3.setText("Listo");
@@ -191,7 +186,7 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel2.add(crearprobtn);
-        crearprobtn.setBounds(280, 320, 130, 30);
+        crearprobtn.setBounds(310, 270, 200, 30);
 
         ejecutarbtn.setText("Ejecutar");
         ejecutarbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -200,12 +195,23 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ejecutarbtn);
-        ejecutarbtn.setBounds(420, 320, 90, 30);
+        ejecutarbtn.setBounds(420, 330, 90, 30);
 
-        jScrollPane7.setViewportView(jlisto);
+        jScrollPane7.setViewportView(jList2);
 
         jPanel2.add(jScrollPane7);
-        jScrollPane7.setBounds(160, 70, 84, 113);
+        jScrollPane7.setBounds(40, 70, 84, 113);
+
+        pausarbtn.setBackground(new java.awt.Color(255, 0, 0));
+        pausarbtn.setForeground(new java.awt.Color(255, 255, 255));
+        pausarbtn.setText("Pausar");
+        pausarbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pausarbtnActionPerformed(evt);
+            }
+        });
+        jPanel2.add(pausarbtn);
+        pausarbtn.setBounds(310, 330, 90, 30);
 
         principalpnl.addTab("Estados", jPanel2);
 
@@ -213,19 +219,19 @@ public class EstadoVTA extends javax.swing.JFrame {
 
         jLabel7.setText("ID proceso :");
         jPanel3.add(jLabel7);
-        jLabel7.setBounds(70, 70, 80, 14);
+        jLabel7.setBounds(70, 70, 80, 16);
 
         jLabel8.setText("Nombre :");
         jPanel3.add(jLabel8);
-        jLabel8.setBounds(70, 110, 70, 14);
+        jLabel8.setBounds(70, 110, 70, 16);
 
         jLabel9.setText("Tamaño :");
         jPanel3.add(jLabel9);
-        jLabel9.setBounds(70, 150, 70, 14);
+        jLabel9.setBounds(70, 150, 70, 16);
 
         jLabel10.setText("N° de hilos :");
         jPanel3.add(jLabel10);
-        jLabel10.setBounds(70, 190, 80, 14);
+        jLabel10.setBounds(70, 190, 80, 16);
 
         jLabel11.setText("Recursos :");
         jPanel3.add(jLabel11);
@@ -238,7 +244,7 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel3.add(IDtxt);
-        IDtxt.setBounds(169, 65, 40, 20);
+        IDtxt.setBounds(169, 65, 40, 22);
 
         nombretxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,7 +252,7 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel3.add(nombretxt);
-        nombretxt.setBounds(169, 105, 250, 20);
+        nombretxt.setBounds(169, 105, 250, 22);
 
         tamañotxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,9 +260,9 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel3.add(tamañotxt);
-        tamañotxt.setBounds(169, 145, 250, 20);
+        tamañotxt.setBounds(169, 145, 250, 22);
         jPanel3.add(hilotxt);
-        hilotxt.setBounds(169, 185, 250, 20);
+        hilotxt.setBounds(169, 185, 250, 22);
 
         jButton3.setText("R1");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -265,7 +271,7 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton3);
-        jButton3.setBounds(169, 225, 70, 23);
+        jButton3.setBounds(169, 225, 70, 25);
 
         jButton4.setText("R2");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -274,7 +280,7 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton4);
-        jButton4.setBounds(255, 225, 70, 23);
+        jButton4.setBounds(255, 225, 70, 25);
 
         jButton5.setText("R3");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -283,7 +289,7 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton5);
-        jButton5.setBounds(341, 225, 70, 23);
+        jButton5.setBounds(341, 225, 70, 25);
 
         jButton6.setText("R4");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -292,7 +298,7 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton6);
-        jButton6.setBounds(169, 257, 70, 23);
+        jButton6.setBounds(169, 257, 70, 25);
 
         jButton7.setText("R5");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -301,7 +307,7 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton7);
-        jButton7.setBounds(255, 257, 70, 23);
+        jButton7.setBounds(255, 257, 70, 25);
 
         jButton8.setText("R6");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -310,7 +316,7 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton8);
-        jButton8.setBounds(341, 257, 70, 23);
+        jButton8.setBounds(341, 257, 70, 25);
 
         Aceptarbtn.setText("Aceptar");
         Aceptarbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -323,7 +329,7 @@ public class EstadoVTA extends javax.swing.JFrame {
 
         jLabel12.setText("Crear procesos");
         jPanel3.add(jLabel12);
-        jLabel12.setBounds(243, 22, 73, 14);
+        jLabel12.setBounds(243, 22, 87, 16);
 
         principalpnl.addTab("Crear", jPanel3);
 
@@ -555,12 +561,12 @@ public class EstadoVTA extends javax.swing.JFrame {
         IDtxt.setText(ID+"");
         principalpnl.setSelectedIndex(1);
         ID = ID + 1; 
-        R1="";
-        R2="";
-        R3="";
-        R4="";
-        R5="";
-        R6="";
+        R1=0;
+        R2=0;
+        R3=0;
+        R4=0;
+        R5=0;
+        R6=0;
      
     }//GEN-LAST:event_crearprobtnActionPerformed
 
@@ -569,69 +575,63 @@ public class EstadoVTA extends javax.swing.JFrame {
     }//GEN-LAST:event_tamañotxtActionPerformed
 
     private void ejecutarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejecutarbtnActionPerformed
-      
-       for(procesosDAO i: listaprocesos){
-        Llisto.add(i); 
-        } 
-       listaprocesos.clear();
-    
-      hardware.clear(); 
-      for(procesosDAO i: listaprocesos){
-      hardware.addElement(i.getNombre()); 
-      } 
-      listo.clear();
-      
-      for(int i =0;i<Llisto.size();i++){
-          
-          procesosDAO s=Llisto.get(i);
-          listo.addElement(s.getNombre());          
-      } 
-       pausa();
+            
+               
+        for (procesosDAO i : listaprocesos) {//rellena lista de listo
+            Llisto.add(i);
+        }
         
-       ejecucion.addElement(Llisto.get(0).getNombre());
+      
+        obj.start();
+       
         
     }//GEN-LAST:event_ejecutarbtnActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        R6 = "R6";
+        R6 = 1;
         
         jButton8.setEnabled(false);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        R5 = "R5";
+        R5 = 1;
        
         jButton7.setEnabled(false);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-         R4 = "R4";
+         R4 = 1;
         
         jButton6.setEnabled(false);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        R3 = "R3";
+        R3 = 1;
        
         jButton5.setEnabled(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        R2 = "R2";
+        R2 = 1;
       
         jButton4.setEnabled(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-         R1 = "R1";
+         R1 = 1;
         jButton3.setEnabled(false);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void pausarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pausarbtnActionPerformed
+        // TODO add your handling code here:
+        obj.interrupt();
+    }//GEN-LAST:event_pausarbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -701,7 +701,7 @@ public class EstadoVTA extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -731,6 +731,7 @@ public class EstadoVTA extends javax.swing.JFrame {
     private javax.swing.JList<String> jlisto;
     private javax.swing.JList<String> jterminado;
     private javax.swing.JTextField nombretxt;
+    private javax.swing.JButton pausarbtn;
     private javax.swing.JTabbedPane principalpnl;
     private javax.swing.JTextField tamañotxt;
     // End of variables declaration//GEN-END:variables
