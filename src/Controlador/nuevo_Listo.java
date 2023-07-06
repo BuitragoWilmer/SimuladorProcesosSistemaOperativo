@@ -262,7 +262,6 @@ public class nuevo_Listo extends Thread {
                 }
             }
             if (Llistoo.size() > 0) {
-                System.out.println("bien");
                 Lbloqueado.add(Lejecucion.get(0));
                 Lejecucion.remove(0);
                 pausa();
@@ -273,7 +272,6 @@ public class nuevo_Listo extends Thread {
                 EstadoEjecucion();
             }
             if (Lejecucion.size() > 0) {//si la lista de listo esta vacio se ejecuta el proceso
-                System.out.println("bebe");
                 Lejecucion.get(0).setTamaño(Lejecucion.get(0).getTamaño() - 1);
                 liberarRecursos();
                 terminarpro();
