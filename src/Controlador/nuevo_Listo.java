@@ -210,7 +210,7 @@ public class nuevo_Listo extends Thread {
                 pasarListoaEjecucion();
                 System.out.println("el error");
                 
-                ProcesoenEjecucion();//DETERMINA QUE UN PROCESO TENGA LOS RECURSOS LIBRES PARA EJECUTARSE o SINO BLOQUEAR
+                EstadoEjecucion();//DETERMINA QUE UN PROCESO TENGA LOS RECURSOS LIBRES PARA EJECUTARSE o SINO BLOQUEAR
                 
             } else {//ejecucion 2
                 if (Lejecucion.size() > 0) {
@@ -223,7 +223,7 @@ public class nuevo_Listo extends Thread {
         }
     }
     
-    public void ProcesoenEjecucion() {
+    public void EstadoEjecucion() {
 
         if (Validarrecursoslibres() == true) {
             Lejecucion.get(0).setTamaño(Lejecucion.get(0).getTamaño() - 1);
@@ -248,25 +248,18 @@ public class nuevo_Listo extends Thread {
                 System.out.println("2 nombre del proceso que ocupa el recurso r1 " + r1.getProceso());
                 Lejecucion.get(0).setTamaño(Lejecucion.get(0).getTamaño() - 1);
                 LiberarporSegEjecucion();
-                terminarpro();
-               
+                terminarpro();              
                 if (Llistoo.size() > 0 || Lbloqueado.size() > 0 || Lejecucion.size() > 0) {//Si en el programa hay otro proceso
                     if (Lejecucion.size() > 0) {
                         PasarEjecucionaListo();
                     }
                     if (Lbloqueado.size() >= 1) {
-                        System.out.println("yaaaa");
                         sacardeBloqueo();
                        
                     }
-                    
-                    System.out.println("aqui");
-
-                            liberar();
-
+                    liberar();
                     ejecucionProcesos();
                 }
-                System.out.println("no puede salir");
             }
             if (Llistoo.size() > 0) {
                 System.out.println("bien");
@@ -277,7 +270,7 @@ public class nuevo_Listo extends Thread {
                 mostrarbloqueado();
                 pausa();
                 pasarListoaEjecucion();
-                ProcesoenEjecucion();
+                EstadoEjecucion();
             }
             if (Lejecucion.size() > 0) {//si la lista de listo esta vacio se ejecuta el proceso
                 System.out.println("bebe");
@@ -315,10 +308,9 @@ public void liberar(){
             pausa();
             mostrarbloqueado();
             mostrarListo();
-            System.out.println("vea");
             if (Llistoo.size() > 0) {
                 pasarListoaEjecucion();
-                ProcesoenEjecucion();
+                EstadoEjecucion();
             }
         }
     }
@@ -346,7 +338,6 @@ public void liberar(){
     }
     
      public void LiberarporSegEjecucion(){
-        System.out.println("libera recursos 2");
          if (Lejecucion.get(0).getNombre().equals(r1.getProceso())) {
             r1.setEstado(true);
         }
@@ -368,7 +359,6 @@ public void liberar(){
     }
     
     public void liberarRecursos(){
-        System.out.println("libera recursos");
          if (Lejecucion.get(0).getR1() == 1) {
             r1.setEstado(true);
         }
@@ -389,7 +379,6 @@ public void liberar(){
         }
     }
     public void liberarRecursosTerminado(){
-        System.out.println("libera recursos");
          if (Lterminado.get(Lterminado.size()-1).getR1() == 1) {
             r1.setEstado(true);
         }
@@ -474,7 +463,6 @@ public void liberar(){
                 pausa();
                 mostrarEjecucion();
                 mostrarterminado();
-                System.out.println("buenas");
                 liberarRecursosTerminado();
             }           
         }
@@ -582,7 +570,6 @@ public void liberar(){
     }
      
     public boolean Validarrecursoslibres(){
-          boolean valor = true;
           int verificador=0;
           int contador=0;
         if (Lejecucion.get(0).getR1() == 1) {
@@ -617,9 +604,8 @@ public void liberar(){
         }
         if(verificador==contador){
             return true;
-        }else{
-            return false;
         }
+        return false;
     } 
      
     public void pausa() {
