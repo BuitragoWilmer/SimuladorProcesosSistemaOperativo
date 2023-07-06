@@ -142,5 +142,5 @@ public class procesosDAO {
 
     public void setR6(int r6) {
         this.r6 = r6;
-    } 
+    }
 }

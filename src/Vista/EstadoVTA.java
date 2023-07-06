@@ -9,15 +9,20 @@ package Vista;
  *
  * @author Brayan
  */
+import Controlador.MTdetalles;
 import Controlador.nuevo_Listo;
 import Modelo.procesosDAO;
-import Modelo.recursosDAO;
+import com.sun.org.apache.xerces.internal.impl.xs.opti.DefaultText;
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultButtonModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class EstadoVTA extends javax.swing.JFrame {
@@ -27,6 +32,21 @@ public class EstadoVTA extends javax.swing.JFrame {
     DefaultListModel ejecucion = new DefaultListModel();
     DefaultListModel bloqueado = new DefaultListModel();
     DefaultListModel terminado = new DefaultListModel();
+    DefaultListModel r1 = new DefaultListModel();
+    DefaultListModel r2 = new DefaultListModel();
+    DefaultListModel r3 = new DefaultListModel();
+    DefaultListModel r4 = new DefaultListModel();
+    DefaultListModel r5 = new DefaultListModel();
+    DefaultListModel r6 = new DefaultListModel();
+    DefaultListModel pror1 = new DefaultListModel();
+    DefaultListModel pror2 = new DefaultListModel();
+    DefaultListModel pror3 = new DefaultListModel();
+    DefaultListModel pror4 = new DefaultListModel();
+    DefaultListModel pror5 = new DefaultListModel();
+    DefaultListModel pror6 = new DefaultListModel();
+        
+
+    private MTdetalles modelo;
         
     public EstadoVTA() {
         
@@ -37,23 +57,41 @@ public class EstadoVTA extends javax.swing.JFrame {
         jbloqueado.setModel(bloqueado);
         jterminado.setModel(terminado); 
         jlisto.setModel(listo);
+        jlR1.setModel(r1);
+        jlR2.setModel(r2);
+        jlR3.setModel(r3);
+        jlR4.setModel(r4);
+        jlR5.setModel(r5);
+        jlR6.setModel(r6);
+        jlproR1.setModel(pror1);
+        jlproR2.setModel(pror2);
+        jlproR3.setModel(pror3);
+        jlproR4.setModel(pror4);
+        jlproR5.setModel(pror5);
+        jlproR6.setModel(pror6);      
     }
     ArrayList<procesosDAO> listaprocesos = new ArrayList();
     ArrayList<procesosDAO> Llisto = new ArrayList();
     ArrayList<procesosDAO> Lejecucion = new ArrayList();
     ArrayList<procesosDAO> LBloqueado = new ArrayList();
     ArrayList<procesosDAO> Lterminado = new ArrayList();
+    ArrayList<procesosDAO> Lcompletos = new ArrayList();
    
     procesosDAO DAOpro = new procesosDAO();
-    recursosDAO DAOrec = new recursosDAO();
-      nuevo_Listo obj = new nuevo_Listo(Llisto,listaprocesos, listo, Lejecucion, ejecucion, hardware, Lterminado, terminado, LBloqueado,bloqueado);
-    
+      nuevo_Listo obj = new nuevo_Listo(Llisto,listaprocesos, listo, Lejecucion, ejecucion, hardware, Lterminado, terminado, LBloqueado,bloqueado,r1,r2, r3, r4, r5, r6, pror1, pror2, pror3, pror4, pror5, pror6);
+     
     int R1=0;
     int R2=0;  
     int R3=0;  
     int R4=0;  
     int R5=0;  
     int R6=0;  
+
+  
+  
+    
+    
+    
      
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,6 +124,18 @@ public class EstadoVTA extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
         pausarbtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -104,9 +154,14 @@ public class EstadoVTA extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         Aceptarbtn = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablita = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -115,154 +170,265 @@ public class EstadoVTA extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jlR2 = new javax.swing.JList<>();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jlproR6 = new javax.swing.JList<>();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jlR1 = new javax.swing.JList<>();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jlR3 = new javax.swing.JList<>();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jlR4 = new javax.swing.JList<>();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jlR5 = new javax.swing.JList<>();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jlR6 = new javax.swing.JList<>();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        jlproR1 = new javax.swing.JList<>();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        jlproR2 = new javax.swing.JList<>();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        jlproR3 = new javax.swing.JList<>();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        jlproR4 = new javax.swing.JList<>();
+        jScrollPane18 = new javax.swing.JScrollPane();
+        jlproR5 = new javax.swing.JList<>();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel2.setText("Nuevo");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("NUEVO");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(50, 40, 60, 16);
+        jLabel2.setBounds(70, 50, 70, 20);
 
+        jlisto.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jScrollPane1.setViewportView(jlisto);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(170, 70, 84, 113);
+        jScrollPane1.setBounds(240, 90, 120, 150);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel3.setText("Listo");
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("LISTO");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(180, 40, 50, 16);
+        jLabel3.setBounds(260, 50, 70, 22);
 
+        jterminado.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jScrollPane3.setViewportView(jterminado);
 
         jPanel2.add(jScrollPane3);
-        jScrollPane3.setBounds(420, 70, 84, 113);
+        jScrollPane3.setBounds(590, 90, 120, 150);
 
+        jbloqueado.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jScrollPane4.setViewportView(jbloqueado);
 
         jPanel2.add(jScrollPane4);
-        jScrollPane4.setBounds(160, 240, 84, 113);
+        jScrollPane4.setBounds(240, 340, 130, 150);
 
+        jejecucion.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jScrollPane5.setViewportView(jejecucion);
 
         jPanel2.add(jScrollPane5);
-        jScrollPane5.setBounds(290, 70, 84, 113);
+        jScrollPane5.setBounds(410, 90, 120, 150);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel4.setText("Bloqueado");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("BLOQUEADO");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(170, 210, 80, 16);
+        jLabel4.setBounds(250, 300, 110, 22);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("Ejecucion");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("EJECUCION");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(300, 40, 60, 14);
+        jLabel5.setBounds(420, 50, 100, 22);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel6.setText("Terminado");
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("TERMINADO");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(430, 40, 70, 14);
+        jLabel6.setBounds(590, 50, 110, 22);
 
-        crearprobtn.setText("Crear proceso");
+        crearprobtn.setBackground(new java.awt.Color(51, 0, 51));
+        crearprobtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        crearprobtn.setForeground(new java.awt.Color(255, 255, 255));
+        crearprobtn.setText("CREAR PROCESO");
+        crearprobtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         crearprobtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crearprobtnActionPerformed(evt);
             }
         });
         jPanel2.add(crearprobtn);
-        crearprobtn.setBounds(310, 270, 200, 30);
+        crearprobtn.setBounds(520, 460, 200, 40);
 
-        ejecutarbtn.setText("Ejecutar");
+        ejecutarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/poder (2).png"))); // NOI18N
+        ejecutarbtn.setBorderPainted(false);
+        ejecutarbtn.setContentAreaFilled(false);
+        ejecutarbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ejecutarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ejecutarbtnActionPerformed(evt);
             }
         });
         jPanel2.add(ejecutarbtn);
-        ejecutarbtn.setBounds(420, 330, 90, 30);
+        ejecutarbtn.setBounds(70, 380, 80, 70);
 
+        jList2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jScrollPane7.setViewportView(jList2);
 
         jPanel2.add(jScrollPane7);
-        jScrollPane7.setBounds(40, 70, 84, 113);
+        jScrollPane7.setBounds(50, 90, 120, 150);
 
         pausarbtn.setBackground(new java.awt.Color(255, 0, 0));
         pausarbtn.setForeground(new java.awt.Color(255, 255, 255));
-        pausarbtn.setText("Pausar");
+        pausarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pausa.png"))); // NOI18N
+        pausarbtn.setBorderPainted(false);
+        pausarbtn.setContentAreaFilled(false);
+        pausarbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pausarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pausarbtnActionPerformed(evt);
             }
         });
         jPanel2.add(pausarbtn);
-        pausarbtn.setBounds(310, 330, 90, 30);
+        pausarbtn.setBounds(520, 350, 80, 70);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boton-de-play.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1);
+        jButton1.setBounds(630, 350, 100, 70);
+
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha-dibujada-a-la-derecha.png"))); // NOI18N
+        jPanel2.add(jLabel29);
+        jLabel29.setBounds(410, 290, 0, 0);
+
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha-hacia-arriba.png"))); // NOI18N
+        jPanel2.add(jLabel32);
+        jLabel32.setBounds(270, 250, 0, 50);
+
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha-correcta.png"))); // NOI18N
+        jPanel2.add(jLabel31);
+        jLabel31.setBounds(530, 150, 0, 0);
+
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha-correcta.png"))); // NOI18N
+        jPanel2.add(jLabel30);
+        jLabel30.setBounds(360, 150, 0, 0);
+
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha-correcta.png"))); // NOI18N
+        jPanel2.add(jLabel28);
+        jLabel28.setBounds(170, 150, 0, 0);
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setText("Reanudar");
+        jPanel2.add(jLabel27);
+        jLabel27.setBounds(650, 420, 70, 16);
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText("Ejecutar");
+        jPanel2.add(jLabel25);
+        jLabel25.setBounds(80, 460, 70, 17);
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText("Pausa");
+        jPanel2.add(jLabel26);
+        jLabel26.setBounds(540, 420, 50, 16);
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background_blemishes_dark_91678_2560x1600.jpg"))); // NOI18N
+        jPanel2.add(jLabel22);
+        jLabel22.setBounds(490, 340, 250, 110);
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background_blemishes_dark_91678_2560x1600.jpg"))); // NOI18N
+        jPanel2.add(jLabel24);
+        jLabel24.setBounds(30, 40, 680, 470);
+
+        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background_blemishes_dark_91678_2560x1600.jpg"))); // NOI18N
+        jPanel2.add(jLabel36);
+        jLabel36.setBounds(0, 0, 740, 530);
 
         principalpnl.addTab("Estados", jPanel2);
 
         jPanel3.setLayout(null);
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("ID proceso :");
         jPanel3.add(jLabel7);
-        jLabel7.setBounds(70, 70, 80, 16);
+        jLabel7.setBounds(90, 110, 110, 22);
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Nombre :");
         jPanel3.add(jLabel8);
-        jLabel8.setBounds(70, 110, 70, 16);
+        jLabel8.setBounds(90, 160, 90, 22);
 
-        jLabel9.setText("Tamaño :");
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Tamaño (KB):");
         jPanel3.add(jLabel9);
-        jLabel9.setBounds(70, 150, 70, 16);
+        jLabel9.setBounds(90, 220, 120, 20);
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("N° de hilos :");
         jPanel3.add(jLabel10);
-        jLabel10.setBounds(70, 190, 80, 16);
+        jLabel10.setBounds(90, 270, 120, 22);
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Recursos :");
         jPanel3.add(jLabel11);
-        jLabel11.setBounds(72, 225, 70, 20);
+        jLabel11.setBounds(100, 370, 110, 20);
 
         IDtxt.setEditable(false);
+        IDtxt.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         IDtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IDtxtActionPerformed(evt);
             }
         });
         jPanel3.add(IDtxt);
-        IDtxt.setBounds(169, 65, 40, 22);
+        IDtxt.setBounds(250, 100, 50, 30);
 
+        nombretxt.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         nombretxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombretxtActionPerformed(evt);
             }
         });
         jPanel3.add(nombretxt);
-        nombretxt.setBounds(169, 105, 250, 22);
+        nombretxt.setBounds(250, 152, 270, 30);
 
+        tamañotxt.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         tamañotxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tamañotxtActionPerformed(evt);
             }
         });
         jPanel3.add(tamañotxt);
-        tamañotxt.setBounds(169, 145, 250, 22);
+        tamañotxt.setBounds(250, 210, 270, 30);
+
+        hilotxt.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jPanel3.add(hilotxt);
-        hilotxt.setBounds(169, 185, 250, 22);
+        hilotxt.setBounds(250, 270, 270, 30);
 
         jButton3.setText("R1");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -271,7 +437,7 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton3);
-        jButton3.setBounds(169, 225, 70, 25);
+        jButton3.setBounds(250, 350, 70, 23);
 
         jButton4.setText("R2");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -280,7 +446,7 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton4);
-        jButton4.setBounds(255, 225, 70, 25);
+        jButton4.setBounds(350, 350, 70, 23);
 
         jButton5.setText("R3");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -289,7 +455,7 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton5);
-        jButton5.setBounds(341, 225, 70, 25);
+        jButton5.setBounds(440, 350, 70, 23);
 
         jButton6.setText("R4");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -298,7 +464,7 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton6);
-        jButton6.setBounds(169, 257, 70, 25);
+        jButton6.setBounds(250, 390, 70, 23);
 
         jButton7.setText("R5");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -307,7 +473,7 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton7);
-        jButton7.setBounds(255, 257, 70, 25);
+        jButton7.setBounds(350, 390, 70, 23);
 
         jButton8.setText("R6");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -316,24 +482,55 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton8);
-        jButton8.setBounds(341, 257, 70, 25);
+        jButton8.setBounds(440, 390, 70, 23);
 
-        Aceptarbtn.setText("Aceptar");
+        Aceptarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/si.png"))); // NOI18N
+        Aceptarbtn.setBorderPainted(false);
+        Aceptarbtn.setContentAreaFilled(false);
         Aceptarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AceptarbtnActionPerformed(evt);
             }
         });
         jPanel3.add(Aceptarbtn);
-        Aceptarbtn.setBounds(415, 334, 100, 40);
+        Aceptarbtn.setBounds(610, 420, 90, 70);
 
-        jLabel12.setText("Crear procesos");
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("CREAR PROCESOS");
         jPanel3.add(jLabel12);
-        jLabel12.setBounds(243, 22, 87, 16);
+        jLabel12.setBounds(250, 40, 230, 27);
+
+        jLabel39.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel39.setText("Aceptar");
+        jPanel3.add(jLabel39);
+        jLabel39.setBounds(630, 490, 60, 16);
+
+        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background_blemishes_dark_91678_2560x1600.jpg"))); // NOI18N
+        jLabel38.setText("jLabel33");
+        jPanel3.add(jLabel38);
+        jLabel38.setBounds(560, 410, 180, 100);
+
+        jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background_blemishes_dark_91678_2560x1600.jpg"))); // NOI18N
+        jLabel37.setText("jLabel33");
+        jPanel3.add(jLabel37);
+        jLabel37.setBounds(230, 340, 300, 90);
+
+        jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background_blemishes_dark_91678_2560x1600.jpg"))); // NOI18N
+        jLabel33.setText("jLabel33");
+        jPanel3.add(jLabel33);
+        jLabel33.setBounds(0, 20, 740, 70);
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background_blemishes_dark_91678_2560x1600.jpg"))); // NOI18N
+        jPanel3.add(jLabel23);
+        jLabel23.setBounds(0, 0, 740, 540);
 
         principalpnl.addTab("Crear", jPanel3);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tablita.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -344,148 +541,179 @@ public class EstadoVTA extends javax.swing.JFrame {
                 "ID", "Nombre", "Tamaño", "N° de Hilos", "Recursos", "Estado"
             }
         ));
-        jScrollPane6.setViewportView(jTable1);
+        jScrollPane6.setViewportView(tablita);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Detalles de procesos");
+        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 620, 160));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("DETALLES DEL PROCESO");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 290, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Proceso");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 100, 20));
 
         jLabel14.setBackground(new java.awt.Color(204, 204, 255));
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("R6");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, 29, -1));
 
         jLabel15.setBackground(new java.awt.Color(204, 204, 255));
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("R2");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 30, 20));
 
         jLabel16.setBackground(new java.awt.Color(204, 204, 255));
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("R1");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, -1, -1));
 
         jLabel17.setBackground(new java.awt.Color(204, 204, 255));
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("R3");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, -1, -1));
 
         jLabel18.setBackground(new java.awt.Color(204, 204, 255));
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("R4");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, -1, -1));
 
         jLabel19.setBackground(new java.awt.Color(204, 204, 255));
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("R5");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, -1, -1));
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Recursos");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 80, 20));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Estados");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 80, 20));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(300, 300, 300)
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(300, 300, 300)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel14))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jLabel17)
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel18)
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel19)
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel14))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
+        jlR2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jlR2);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 90, 30));
+
+        jlproR6.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane8.setViewportView(jlproR6);
+
+        jPanel1.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 432, 90, 30));
+
+        jlR1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane9.setViewportView(jlR1);
+
+        jPanel1.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 90, 30));
+
+        jlR3.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane10.setViewportView(jlR3);
+
+        jPanel1.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 90, 30));
+
+        jlR4.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane11.setViewportView(jlR4);
+
+        jPanel1.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, 90, 30));
+
+        jlR5.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane12.setViewportView(jlR5);
+
+        jPanel1.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 90, 30));
+
+        jlR6.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane13.setViewportView(jlR6);
+
+        jPanel1.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, 90, 30));
+
+        jlproR1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane14.setViewportView(jlproR1);
+
+        jPanel1.add(jScrollPane14, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 90, 30));
+
+        jlproR2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane15.setViewportView(jlproR2);
+
+        jPanel1.add(jScrollPane15, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 90, 30));
+
+        jlproR3.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane16.setViewportView(jlproR3);
+
+        jPanel1.add(jScrollPane16, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 90, 30));
+
+        jlproR4.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane17.setViewportView(jlproR4);
+
+        jPanel1.add(jScrollPane17, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, 90, 30));
+
+        jlproR5.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane18.setViewportView(jlproR5);
+
+        jPanel1.add(jScrollPane18, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 402, 90, 30));
+
+        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background_blemishes_dark_91678_2560x1600.jpg"))); // NOI18N
+        jPanel1.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 740, 60));
+
+        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/background_blemishes_dark_91678_2560x1600.jpg"))); // NOI18N
+        jPanel1.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 530));
 
         principalpnl.addTab("Detalles", jPanel1);
 
@@ -497,7 +725,7 @@ public class EstadoVTA extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(principalpnl, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+            .addComponent(principalpnl)
         );
 
         pack();
@@ -505,20 +733,14 @@ public class EstadoVTA extends javax.swing.JFrame {
 
     private void AceptarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarbtnActionPerformed
         
-        
+   
         int id=  Integer.parseInt(IDtxt.getText());
         String nombre = nombretxt.getText();
-        int hilos =Integer.parseInt(hilotxt.getText());
         int Tamaño= Integer.parseInt(tamañotxt.getText());
-        int cont=0;            
+        int hilos =Integer.parseInt(hilotxt.getText());
+       int Tama = 0;
        
-       
-        
-        for(Object i: listaprocesos){
-        System.err.println(i.toString());
-        }
-    
-       
+        Tama = tamaño(Tamaño);
         IDtxt.setText("");
         nombretxt.setText("");
         tamañotxt.setText("");
@@ -534,14 +756,9 @@ public class EstadoVTA extends javax.swing.JFrame {
         procesosDAO DAOpro = new procesosDAO(id, nombre, Tamaño, hilos, R1, R2, R3, R4, R5, R6);
         hardware.addElement(DAOpro.getNombre());
         listaprocesos.add(DAOpro);
-        
-        System.out.println(DAOrec+" recursos");
-        System.out.println(DAOpro+"proceso");
 
         principalpnl.setSelectedIndex(0);
-        for(Object i: listaprocesos){
-        System.err.println(i.toString());
-        } 
+       
       
     }//GEN-LAST:event_AceptarbtnActionPerformed
 
@@ -573,19 +790,6 @@ public class EstadoVTA extends javax.swing.JFrame {
     private void tamañotxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamañotxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tamañotxtActionPerformed
-
-    private void ejecutarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejecutarbtnActionPerformed
-            
-               
-        for (procesosDAO i : listaprocesos) {//rellena lista de listo
-            Llisto.add(i);
-        }
-        
-      
-        obj.start();
-       
-        
-    }//GEN-LAST:event_ejecutarbtnActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
@@ -629,9 +833,41 @@ public class EstadoVTA extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void pausarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pausarbtnActionPerformed
-        // TODO add your handling code here:
-        obj.interrupt();
+      //boton de pausa
+      //recorrer Listas y rellenar lista completos 
+     obj.suspeder();
+     for(procesosDAO i : Llisto){
+         Lcompletos.add(i);
+     }
+     for(procesosDAO i : LBloqueado){
+         Lcompletos.add(i);
+     }
+     for(procesosDAO i : Lterminado){
+         Lcompletos.add(i);
+     }
+     for(procesosDAO i : Lejecucion){
+         Lcompletos.add(i);
+     }
+     
+     modelo = new MTdetalles(Lcompletos);
+     tablita.setModel(modelo);
+         
     }//GEN-LAST:event_pausarbtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    obj.reandar();
+    Lcompletos.clear();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ejecutarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejecutarbtnActionPerformed
+
+        for (procesosDAO i : listaprocesos) {//rellena lista de listo
+            Llisto.add(i);
+        }
+
+        obj.start();
+
+    }//GEN-LAST:event_ejecutarbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -659,6 +895,7 @@ public class EstadoVTA extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(EstadoVTA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -667,6 +904,18 @@ public class EstadoVTA extends javax.swing.JFrame {
             }
         });
     }
+    
+    public int tamaño(int x){
+        int Tamaño=0;
+         if(x<12){
+             Tamaño= Integer.parseInt(tamañotxt.getText());
+        }else{
+             tamañotxt.setText("");
+            JOptionPane.showMessageDialog(null, "El tamaño del proceso no puede ser mayor a 12");
+            tamaño(Tamaño);
+        }
+         return Tamaño;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptarbtn;
@@ -674,6 +923,7 @@ public class EstadoVTA extends javax.swing.JFrame {
     private javax.swing.JButton crearprobtn;
     private javax.swing.JButton ejecutarbtn;
     private javax.swing.JTextField hilotxt;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -694,7 +944,25 @@ public class EstadoVTA extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -706,33 +974,46 @@ public class EstadoVTA extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
+    private javax.swing.JScrollPane jScrollPane17;
+    private javax.swing.JScrollPane jScrollPane18;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JList<String> jbloqueado;
     private javax.swing.JList<String> jejecucion;
+    private javax.swing.JList<String> jlR1;
+    private javax.swing.JList<String> jlR2;
+    private javax.swing.JList<String> jlR3;
+    private javax.swing.JList<String> jlR4;
+    private javax.swing.JList<String> jlR5;
+    private javax.swing.JList<String> jlR6;
     private javax.swing.JList<String> jlisto;
+    private javax.swing.JList<String> jlproR1;
+    private javax.swing.JList<String> jlproR2;
+    private javax.swing.JList<String> jlproR3;
+    private javax.swing.JList<String> jlproR4;
+    private javax.swing.JList<String> jlproR5;
+    private javax.swing.JList<String> jlproR6;
     private javax.swing.JList<String> jterminado;
     private javax.swing.JTextField nombretxt;
     private javax.swing.JButton pausarbtn;
     private javax.swing.JTabbedPane principalpnl;
+    private javax.swing.JTable tablita;
     private javax.swing.JTextField tamañotxt;
     // End of variables declaration//GEN-END:variables
+
 }
