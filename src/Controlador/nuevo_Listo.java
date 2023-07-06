@@ -137,7 +137,7 @@ public class nuevo_Listo extends Thread {
                 pausa();
             }
             
-            elmejoradoEjecucion();
+            ejecucionProcesos();
             nuevo.clear();
         }
     }
@@ -195,7 +195,7 @@ public class nuevo_Listo extends Thread {
         mostrarterminado();
     }
     
-    public void elmejoradoEjecucion(){
+    public void ejecucionProcesos(){
         while (!isInterrupted()){
             ensuspension();
              if (Llistoo.size() >= 1) {// EJECUCION si hay mas de un proceso disponible en listo
@@ -204,7 +204,7 @@ public class nuevo_Listo extends Thread {
                     if(Lbloqueado.size()>0 && n!=0){//verifica si puede liberar recursos
                        desbloquearRecursos();//mueve el ramdom para ver si ya se puede utilizar los recursos                                    
                        sacardeBloqueo();//Revisa si los recursos estan libre para sacar de bloqueo
-                       elmejoradoEjecucion();
+                       ejecucionProcesos();
                  }  
                  
                 pasarListoaEjecucion();
@@ -216,7 +216,7 @@ public class nuevo_Listo extends Thread {
                 if (Lejecucion.size() > 0) {
                     PasarEjecucionaListo();
                     System.out.println("entra");
-                    elmejoradoEjecucion();
+                    ejecucionProcesos();
                 }
                 
             }       
@@ -235,12 +235,12 @@ public class nuevo_Listo extends Thread {
                     if (Lbloqueado.size() > 0) {
                         sacardeBloqueo();//Revisa si los recursos estan libre para sacar de bloqueo
                     }
-                    elmejoradoEjecucion();
+                    ejecucionProcesos();
                 } else {
                     if (Lbloqueado.size() >= 1) {
                         sacardeBloqueo();//Revisa si los recursos estan libre para sacar de bloqueo
                     }
-                    elmejoradoEjecucion();
+                    ejecucionProcesos();
                 }
             }
         } else {// PASA A BLOQUEADO
@@ -264,7 +264,7 @@ public class nuevo_Listo extends Thread {
 
                             liberar();
 
-                    elmejoradoEjecucion();
+                    ejecucionProcesos();
                 }
                 System.out.println("no puede salir");
             }
@@ -293,7 +293,7 @@ public class nuevo_Listo extends Thread {
                     if (Lbloqueado.size() > 0) {
                         sacardeBloqueo();
                     }
-                    elmejoradoEjecucion();
+                    ejecucionProcesos();
                 }
             }
         }
