@@ -13,10 +13,6 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import Vista.EstadoVTA;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import Modelo.r1;
 import Modelo.r2;
 import Modelo.r3;
@@ -31,7 +27,7 @@ import static java.lang.Thread.sleep;
  *
  * @author Brayan
  */
-public class nuevo_Listo extends Thread {
+public class EjecutarController extends Thread {
 
     private IEstadoEstrategy estrategia;
     public boolean iteral;
@@ -68,7 +64,7 @@ public class nuevo_Listo extends Thread {
      boolean br1 = true , br2= true , br3= true, br4= true, br5= true, br6= true;
      int x1=0, x2=0, x3=0, x4=0, x5=0, x6=0;
 
-    public nuevo_Listo(ArrayList<procesosDAO> Llistoo, ArrayList<procesosDAO> Lnuevo, DefaultListModel listones, ArrayList<procesosDAO> Lejecucion, DefaultListModel ejecucion, DefaultListModel nuevo, ArrayList<procesosDAO> Lterminado, DefaultListModel terminado, ArrayList<procesosDAO> Lbloqueado, DefaultListModel bloqueado, DefaultListModel R1, DefaultListModel R2, DefaultListModel R3, DefaultListModel R4, DefaultListModel R5, DefaultListModel R6, DefaultListModel proR1, DefaultListModel proR2, DefaultListModel proR3, DefaultListModel proR4, DefaultListModel proR5, DefaultListModel proR6) {
+    public EjecutarController(ArrayList<procesosDAO> Llistoo, ArrayList<procesosDAO> Lnuevo, DefaultListModel listones, ArrayList<procesosDAO> Lejecucion, DefaultListModel ejecucion, DefaultListModel nuevo, ArrayList<procesosDAO> Lterminado, DefaultListModel terminado, ArrayList<procesosDAO> Lbloqueado, DefaultListModel bloqueado, DefaultListModel R1, DefaultListModel R2, DefaultListModel R3, DefaultListModel R4, DefaultListModel R5, DefaultListModel R6, DefaultListModel proR1, DefaultListModel proR2, DefaultListModel proR3, DefaultListModel proR4, DefaultListModel proR5, DefaultListModel proR6) {
         this.Llistoo = Llistoo;
         this.Lnuevo = Lnuevo;
         this.listones = listones;

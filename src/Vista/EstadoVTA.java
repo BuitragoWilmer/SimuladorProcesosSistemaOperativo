@@ -10,7 +10,7 @@ package Vista;
  * @author Brayan
  */
 import Controlador.MTdetalles;
-import Controlador.nuevo_Listo;
+import Controlador.EjecutarController;
 import Modelo.procesosDAO;
 import com.sun.org.apache.xerces.internal.impl.xs.opti.DefaultText;
 import static java.lang.Thread.sleep;
@@ -78,7 +78,7 @@ public class EstadoVTA extends javax.swing.JFrame {
     ArrayList<procesosDAO> Lcompletos = new ArrayList();
    
     procesosDAO DAOpro = new procesosDAO();
-      nuevo_Listo obj = new nuevo_Listo(Llisto,listaprocesos, listo, Lejecucion, ejecucion, hardware, Lterminado, terminado, LBloqueado,bloqueado,r1,r2, r3, r4, r5, r6, pror1, pror2, pror3, pror4, pror5, pror6);
+      EjecutarController obj = new EjecutarController(Llisto,listaprocesos, listo, Lejecucion, ejecucion, hardware, Lterminado, terminado, LBloqueado,bloqueado,r1,r2, r3, r4, r5, r6, pror1, pror2, pror3, pror4, pror5, pror6);
      
     int R1=0;
     int R2=0;  
