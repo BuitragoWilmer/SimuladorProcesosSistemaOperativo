@@ -1,2 +1,4 @@
 Aqui empieza el uso de repositorio git
 segunda revicion
+
+Cambios modificados dsde el segundo pc
