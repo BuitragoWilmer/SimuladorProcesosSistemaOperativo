@@ -1,7 +1,9 @@
 Aqui empieza el uso de repositorio git
-segunda revicion
+segunda revisión
 
-Cambios modificados dsde el segundo pc
+Cambios modificados desde el segundo pc
 
 Se quiere realizar una refactorizacion del codigo buscando que
 la legibilidad del codigo sea mejor para cualquier usuario
+
+Aparte se busca una optimizacion del codigo
