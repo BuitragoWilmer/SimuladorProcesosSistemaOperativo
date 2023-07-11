@@ -5,6 +5,8 @@ Cambios modificados desde el segundo pc
 
 se reliza el rebase en m1
 
+Con esto se implmenta el mastter
+
 Se quiere realizar una refactorizacion del codigo buscando que
 la legibilidad del codigo sea mejor para cualquier usuario
 
