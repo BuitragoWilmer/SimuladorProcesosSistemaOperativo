@@ -7,6 +7,9 @@ se reliza el rebase en m1
 
 Con esto se implmenta el mastter
 
+se reliza el rebase en m2
+
+
 Se quiere realizar una refactorizacion del codigo buscando que
 la legibilidad del codigo sea mejor para cualquier usuario
 
