@@ -12,8 +12,9 @@ Se debe generar los procesos y acontinuacion dar al boton de ejecuar, al dar pus
 
 [![sistemas](https://res.cloudinary.com/dvejlclzb/image/upload/v1689041958/svcf9qpduxo7ayhimab6.jpg "sistemas")](https://res.cloudinary.com/dvejlclzb/image/upload/v1689041958/svcf9qpduxo7ayhimab6.jpg "sistemas")
 
-Nota:
-El actual proyecto esta en proceso de refactorizacion para su legibilidad.
+Nota:\
+El actual proyecto esta en proceso de refactorizacion para su legibilidad.\
+La implementacion esta solventada por java 8.
 
 >Creado por Wilmer Buitrago, en compañia de Luis Cardenas.\
 >Universidad Distrital Francisco Jose de Caldas
