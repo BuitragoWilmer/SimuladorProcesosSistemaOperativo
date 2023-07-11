@@ -11,6 +11,7 @@ se reliza el rebase en m2
 
 se reliza el rebase en m3
 
+Vamos a realizar una recontruccion
 
 Se quiere realizar una refactorizacion del codigo buscando que
 la legibilidad del codigo sea mejor para cualquier usuario

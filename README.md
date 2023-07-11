@@ -18,3 +18,5 @@ La implementacion esta solventada por java 8.
 
 >Creado por Wilmer Buitrago, en compañia de Luis Cardenas.\
 >Universidad Distrital Francisco Jose de Caldas
+
+Para mas informacion wilmerab20@gmail.com
